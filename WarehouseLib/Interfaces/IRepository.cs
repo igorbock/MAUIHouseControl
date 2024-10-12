@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace WarehouseLib.Interfaces
 {
@@ -8,7 +9,9 @@ namespace WarehouseLib.Interfaces
         ObservableCollection<TypeT> GetAll();
         TypeT GetById(int id);
         void Update(TypeT entity);
+        void UpdateAll(IEnumerable<TypeT> entities);
         void Delete(int id);
+        void DeleteAll(IEnumerable<TypeT> entities);
         void SaveChanges();
     }
 }

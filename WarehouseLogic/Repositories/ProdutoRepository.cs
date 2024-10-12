@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using WarehouseLib.Interfaces;
 using WarehouseLib.Models;
 using WarehouseLogic.Context;
@@ -20,5 +21,7 @@ namespace WarehouseLogic.Repositories
         public void Update(Produto entity) => _dbContext.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
         public void Delete(int id) => _dbContext.Remove(GetById(id));
         public void SaveChanges() => _dbContext.SaveChanges();
+        public void UpdateAll(IEnumerable<Produto> entities) => _dbContext.UpdateRange(entities);
+        public void DeleteAll(IEnumerable<Produto> entities) => _dbContext.RemoveRange(entities);
     }
 }
