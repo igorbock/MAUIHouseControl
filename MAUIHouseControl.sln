@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35303.130
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAUIHouseControl", "MAUIHouseControl\MAUIHouseControl.csproj", "{B6A7B787-49DB-47B2-B3FC-64E0ECC7E990}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MAUIHouseControl", "MAUIHouseControl\MAUIHouseControl.csproj", "{B6A7B787-49DB-47B2-B3FC-64E0ECC7E990}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarehouseLib", "WarehouseLib\WarehouseLib.csproj", "{70B499F8-FDE9-45CB-9C1C-A1A90534DA5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WarehouseLib", "WarehouseLib\WarehouseLib.csproj", "{70B499F8-FDE9-45CB-9C1C-A1A90534DA5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarehouseLogic", "WarehouseLogic\WarehouseLogic.csproj", "{1A51F9A4-0943-4BE7-8689-EDCF91A5540C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WarehouseLogic", "WarehouseLogic\WarehouseLogic.csproj", "{1A51F9A4-0943-4BE7-8689-EDCF91A5540C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAUIHouseTest", "MAUIHouseTest\MAUIHouseTest.csproj", "{1A234084-33B8-4E93-A9E1-98429ABD259A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{1A51F9A4-0943-4BE7-8689-EDCF91A5540C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A51F9A4-0943-4BE7-8689-EDCF91A5540C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A51F9A4-0943-4BE7-8689-EDCF91A5540C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A234084-33B8-4E93-A9E1-98429ABD259A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A234084-33B8-4E93-A9E1-98429ABD259A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A234084-33B8-4E93-A9E1-98429ABD259A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A234084-33B8-4E93-A9E1-98429ABD259A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

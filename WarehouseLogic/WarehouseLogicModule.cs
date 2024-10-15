@@ -11,8 +11,8 @@ namespace WarehouseLogic
     {
         public override void Load()
         {
-            Bind<SQLiteDbContext>().ToSelf();
-            Bind<DbContextOptions>().ToSelf();
+            Bind<DbContextOptions<SQLiteDbContext>>().ToSelf();
+            Bind<SQLiteDbContext>().ToSelf().OnActivation(ctx => ctx.ChangeTracker.AutoDetectChangesEnabled = false);
 
             Bind<IRepository<Produto>>().To<ProdutoRepository>();
             Bind<IRepository<Marca>>().To<MarcaRepository>();
