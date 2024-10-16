@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using WarehouseLogic;
+using WarehouseLogic.Extensions;
 
 namespace MAUIHouseControl
 {
@@ -18,6 +20,7 @@ namespace MAUIHouseControl
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
+            builder.Services.AddNinjectBindings(new WarehouseLogicModule());
 
             return builder.Build();
         }
