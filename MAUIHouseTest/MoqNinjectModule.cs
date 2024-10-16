@@ -1,22 +1,16 @@
-﻿using Ninject.Modules;
-using Ninject.Planning.Bindings;
+﻿using Ninject.MockingKernel.Moq;
+using WarehouseLib.Interfaces;
+using WarehouseLib.Models;
+using WarehouseLogic.Repositories;
 
 namespace MAUIHouseTest
 {
-    public class MoqNinjectModule : NinjectModule
+    public class MoqNinjectModule : MoqModule
     {
-        private readonly ICollection<IBinding> _bindings;
-
-        public MoqNinjectModule(ICollection<IBinding> bindings)
-        {
-            _bindings = bindings;
-        }
-
         public override void Load()
         {
-            throw new NotImplementedException();
+            Bind<IRepository<Produto>>().To<ProdutoRepository>().InSingletonScope();
+            Bind<IRepository<Marca>>().To<MarcaRepository>().InThreadScope();
         }
-
-        public ICollection<IBinding> Bindings => _bindings;
     }
 }
