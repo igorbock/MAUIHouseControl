@@ -16,9 +16,9 @@ namespace WarehouseLogic
                 .InSingletonScope()
                 .OnActivation(ctx => ctx.ChangeTracker.AutoDetectChangesEnabled = false);
 
-            Bind<IRepository<Produto>>().To<ProdutoRepository>();
-            Bind<IRepository<Marca>>().To<MarcaRepository>();
-            Bind<IRepository<Operacao>>().To<OperacaoRepository>();
+            Bind<IRepository<Produto>>().To<ProdutoRepository>().InThreadScope();
+            Bind<IRepository<Marca>>().To<MarcaRepository>().InThreadScope();
+            Bind<IRepository<Operacao>>().To<OperacaoRepository>().InThreadScope();
         }
     }
 }

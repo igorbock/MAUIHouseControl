@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Ninject;
 using Ninject.Infrastructure;
 using Ninject.Modules;
@@ -11,7 +10,7 @@ namespace WarehouseLogic.Extensions
     {
         public static IServiceCollection AddNinjectBindings(this IServiceCollection services, NinjectModule module)
         {
-            if (module.Bindings.Count == 0)
+            if (module.Kernel == null)
                 module.OnLoad(new StandardKernel());
 
             foreach (var binding in module.Bindings)
