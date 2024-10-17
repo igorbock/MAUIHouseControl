@@ -20,7 +20,8 @@ namespace MAUIHouseControl
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
-            builder.Services.AddNinjectBindings(new WarehouseLogicModule());
+            builder.Services.AddNinjectBindings([new WarehouseLogicModule()]);
+            builder.Services.AddSingleton<MainPage>();
 
             return builder.Build();
         }

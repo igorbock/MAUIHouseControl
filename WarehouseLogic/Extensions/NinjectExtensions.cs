@@ -2,25 +2,34 @@
 using Ninject;
 using Ninject.Infrastructure;
 using Ninject.Modules;
+using Ninject.Planning.Bindings;
 using System;
+using System.Collections.Generic;
 
 namespace WarehouseLogic.Extensions
 {
     public static class NinjectExtensions
     {
-        public static IServiceCollection AddNinjectBindings(this IServiceCollection services, NinjectModule module)
+        public static void AddNinjectBindings(this IServiceCollection services, NinjectModule[] modules)
         {
-            if (module.Kernel == null)
-                module.OnLoad(new StandardKernel());
+            IKernel _kernel = new StandardKernel();
+            var bindingCollection = new List<IBinding>();
 
-            foreach (var binding in module.Bindings)
+            foreach (var module in modules)
+            {
+                module.OnLoad(_kernel);
+                bindingCollection.AddRange(module.Bindings);
+            }
+
+            foreach (var binding in bindingCollection)
             {
                 var service = binding.Service;
-                var implementType = binding.ProviderCallback?.Target?.GetType();
+                Func<IServiceProvider, object> implementType = a => _kernel.GetService(service);
 
                 if (implementType == null)
                     throw new NotImplementedException($"Tipo de implementação não encontrado para o serviço {service.Name}");
 
+                var serviceName = _kernel.GetService(service)?.GetType().Name ?? implementType.Method.Name;
                 var scope = binding.ScopeCallback;
                 if (scope == StandardScopeCallbacks.Transient)
                     services.AddTransient(service, implementType);
@@ -29,8 +38,6 @@ namespace WarehouseLogic.Extensions
                 else if (scope == StandardScopeCallbacks.Thread)
                     services.AddScoped(service, implementType);
             }
-
-            return services;
         }
     }
 }

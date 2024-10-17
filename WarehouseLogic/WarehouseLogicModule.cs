@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Ninject.Modules;
+﻿using Ninject.Modules;
 using WarehouseLib.Interfaces;
 using WarehouseLib.Models;
 using WarehouseLogic.Context;
@@ -11,14 +10,11 @@ namespace WarehouseLogic
     {
         public override void Load()
         {
-            Bind<DbContextOptions<SQLiteDbContext>>().ToSelf();
-            Bind<SQLiteDbContext>().ToSelf()
-                .InSingletonScope()
-                .OnActivation(ctx => ctx.ChangeTracker.AutoDetectChangesEnabled = false);
+            Bind<SQLiteDbContext>().ToSelf();
 
-            Bind<IRepository<Produto>>().To<ProdutoRepository>().InThreadScope();
-            Bind<IRepository<Marca>>().To<MarcaRepository>().InThreadScope();
-            Bind<IRepository<Operacao>>().To<OperacaoRepository>().InThreadScope();
+            Bind<IRepository<Produto>>().To<ProdutoRepository>();
+            Bind<IRepository<Marca>>().To<MarcaRepository>();
+            Bind<IRepository<Operacao>>().To<OperacaoRepository>();
         }
     }
 }
